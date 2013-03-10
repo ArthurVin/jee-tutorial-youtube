@@ -14,13 +14,22 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title><ui:insert name="title" /></title>
 		<link rel="stylesheet" type="text/css" href="${request.contextPath}/resources/css/style.css" />
+		<link rel="shortcut icon" href="${request.contextPath}/resources/css/images/favicon.ico" />
 	</h:head>
 	
 	<h:body>
+	
+		<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
+		
+		<p:dialog modal="true" widgetVar="statusDialog" header="Processing..." draggable="true" closable="false">
+			<p:graphicImage value="/css/images/ajaxloadingbar.gif" />
+		</p:dialog>
+	
 		<div id="container">
 			<div id="header">
 				<h1><ui:insert name="header" /></h1>
 			</div>
+			<div id="line" />
 			<div id="content">
 				<ui:insert name="content" />
 			</div>
