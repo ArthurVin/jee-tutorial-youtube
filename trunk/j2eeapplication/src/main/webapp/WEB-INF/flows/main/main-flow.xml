@@ -4,12 +4,17 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
         http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
+	<var name="user" class="com.example.j2eeapp.domain.UserEntity"/>
+
 	<view-state id="welcome" view="welcome.xhtml">
 		<transition on="newUser" to="signUp" />
 	</view-state>
 
-	<view-state id="signUp" view="signUp.xhtml">
+	<view-state id="signUp" view="signUp.xhtml" model="user">
 		<transition on="backToSignIn" to="welcome" />
+		<transition on="confirmSignUp" to="welcome">
+			<evaluate expression="userService.createUser(user)" />
+		</transition>
 	</view-state>
 	
 </flow>

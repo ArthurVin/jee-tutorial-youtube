@@ -6,7 +6,7 @@
 		
 	<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
 		
-		
+		<class>com.example.j2eeapp.domain.UserEntity</class>
 		
 	</persistence-unit>
 </persistence>
