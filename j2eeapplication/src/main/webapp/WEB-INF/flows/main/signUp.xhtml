@@ -20,7 +20,7 @@
 						<h:outputText value="First Name:" />
 						<h:outputText style="color:red" value="*  " />
 					</h:panelGroup>
-					<p:inputText id="firstName" label="First Name" value=""	required="true" title="Enter your First Name!">
+					<p:inputText id="firstName" label="First Name" value="#{user.firstName}" required="true" title="Enter your First Name!">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<p:tooltip for="firstName" styleClass="tooltip" showEvent="focus" hideEvent="blur" />
@@ -29,7 +29,7 @@
 						<h:outputText value="Last Name:" />
 						<h:outputText style="color:red" value="*  " />
 					</h:panelGroup>
-					<p:inputText id="lastName" label="Last Name" value="" required="true" title="Enter your Last Name!">
+					<p:inputText id="lastName" label="Last Name" value="#{user.lastName}" required="true" title="Enter your Last Name!">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<p:tooltip for="lastName" styleClass="tooltip" showEvent="focus" hideEvent="blur" />
@@ -38,7 +38,7 @@
 						<h:outputText value="User Name:" />
 						<h:outputText style="color:red" value="*  " />
 					</h:panelGroup>
-					<p:inputText id="userName" value="" required="true" label="User Name" title="Enter your User Name!">
+					<p:inputText id="userName" value="#{user.userName}" required="true" label="User Name" title="Enter your User Name!">
 						<f:validateLength minimum="2" />
 					</p:inputText>
 					<p:tooltip for="userName" styleClass="tooltip" showEvent="focus" hideEvent="blur" />
@@ -47,7 +47,7 @@
 						<h:outputText value="Enter Password:" />
 						<h:outputText style="color:red" value="*  " />
 					</h:panelGroup>
-					<p:password id="pass1" value="" required="true" label="Password" title="Please enter a password!" feedback="true" match="pass2">
+					<p:password id="pass1" value="#{user.password}" required="true" label="Password" title="Please enter a password!" feedback="true" match="pass2">
 						<f:validateLength minimum="2" />
 					</p:password>
 					<h:outputText value="" />
@@ -56,11 +56,11 @@
 						<h:outputText value="Repeat Password:" />
 						<h:outputText style="color:red" value="*  " />
 					</h:panelGroup>
-					<p:password id="pass2" value="" required="true" label="Password" title="Please enter a password!" />
+					<p:password id="pass2" required="true" label="Password" title="Please enter a password!" />
 					<h:outputText value="" />
 					
 					<p:commandButton id="backToSignIn" action="backToSignIn" immediate="true" icon="ui-icon-arrowreturnthick-1-w" value="Back to Sign In" />
-					<p:commandButton id="submitButton" action="signUp" update="regPanelGrid,messages" icon="ui-icon-check" value="Sign Up" />
+					<p:commandButton id="submitButton" action="confirmSignUp" update="regPanelGrid,messages" icon="ui-icon-check" value="Sign Up" />
 					
 				</h:panelGrid>
 			</p:fieldset>

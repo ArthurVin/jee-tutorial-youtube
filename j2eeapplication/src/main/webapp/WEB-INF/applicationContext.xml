@@ -6,4 +6,12 @@
 	<import resource="datasource-config.xml" />
 	<import resource="webflow-config.xml" />	
 	
+	<!-- DAO declarations -->
+	<bean id="userDao" class="com.example.j2eeapp.dao.UserJpaDao" />
+	
+	<!-- Services declarations -->
+	<bean id="userService" class="com.example.j2eeapp.services.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+	</bean>
+	
 </beans>
