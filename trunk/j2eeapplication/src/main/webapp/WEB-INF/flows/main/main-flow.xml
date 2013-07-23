@@ -12,9 +12,17 @@
 
 	<view-state id="signUp" view="signUp.xhtml" model="user">
 		<transition on="backToSignIn" to="welcome" />
-		<transition on="confirmSignUp" to="welcome">
+		<transition on="confirmSignUp" to="authentication">
 			<evaluate expression="userService.createUser(user)" />
 		</transition>
 	</view-state>
+	
+	<action-state id="authentication">
+		<evaluate expression="userAuthenticationProviderService.processUserAuthentication(user)" />
+		<transition on="yes" to="finish" />
+		<transition on="no" to="welcome" />
+	</action-state>
+	
+	<end-state id="finish" view="externalRedirect:account" />
 	
 </flow>
