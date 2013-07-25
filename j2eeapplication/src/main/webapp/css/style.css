@@ -81,7 +81,37 @@
 	font-size: 11px;
 }
 
+.ui-message-error, .ui-message-info {
+	position: absolute !important;
+	margin-top: -10px;
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.8);
+}
 
+#greeting {
+	font-family: Verdana;
+	font-size: 12px;
+	color: #272727;
+	float: right;
+	height: 25px;
+	margin: 0 auto;
+	margin-top: -33px;
+}
+ 
+#greeting a img {
+	border: none;
+	width: 20px;
+	margin-bottom: -7px;
+}
+
+.ui-growl-item {
+	font-family: Arial,sans-serif;
+	font-size: 12px;
+}
+ 
+.ui-growl {
+	top: 90px;
+	right: 40px;
+}
 
 
 

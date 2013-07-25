@@ -6,8 +6,11 @@
 
 	<var name="user" class="com.example.j2eeapp.domain.UserEntity"/>
 
-	<view-state id="welcome" view="welcome.xhtml">
+	<view-state id="welcome" view="welcome.xhtml" model="user">
 		<transition on="newUser" to="signUp" />
+		<transition on="confirmSignIn" to="finish">
+			<evaluate expression="userAuthenticationProviderService.processUserAuthentication(user)" />
+		</transition>
 	</view-state>
 
 	<view-state id="signUp" view="signUp.xhtml" model="user">
