@@ -6,6 +6,11 @@
 
 	<secured attributes="ROLE_USER"/>
 
+	<var name="uiUtils" class="com.example.j2eeapp.ui.utils.UIUtils"/>
+	<on-start>
+		<evaluate expression="userService.loadUserEntityByUsername(currentUser.name)" result="flowScope.user" />
+	</on-start>
+
 	<view-state id="home" view="accountHome.xhtml">
 	</view-state>
 

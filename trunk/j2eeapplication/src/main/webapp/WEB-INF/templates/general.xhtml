@@ -18,14 +18,18 @@
 	</h:head>
 	
 	<h:body>
-	
 		<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();" />
-		
 		<p:dialog modal="true" widgetVar="statusDialog" header="Processing..." draggable="true" closable="false">
 			<p:graphicImage value="/css/images/ajaxloadingbar.gif" />
 		</p:dialog>
+		<p:growl id="growlMessages" showDetail="false" sticky="false" life="13000" />
 	
 		<div id="container">
+			<div id="greeting">
+				<c:if test="${not empty currentUser.name}">
+					<b>Welcome,</b> ${user.firstName} ${user.lastName} | <a href="${request.contextPath}/app/logout"><img alt="" title="Logout" src="${request.contextPath}/resources/css/images/logout.png" /></a>
+				</c:if>
+			</div>
 			<div id="header">
 				<h1><ui:insert name="header" /></h1>
 			</div>

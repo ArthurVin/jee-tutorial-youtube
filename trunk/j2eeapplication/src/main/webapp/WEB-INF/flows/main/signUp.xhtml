@@ -12,7 +12,8 @@
 	<ui:define name="content">
 		<h:form id="signUpForm">
 			<p:fieldset styleClass="fieldset" legend="Registration Form">
-				<p:messages id="messages" />
+				<p:focus />
+				<p:messages id="messages" globalOnly="true" />
 			
 				<h:panelGrid id="regPanelGrid" style="margin: 0 auto; margin-top: 25px; text-align: right" cellspacing="8" columns="3">
 
@@ -22,17 +23,25 @@
 					</h:panelGroup>
 					<p:inputText id="firstName" label="First Name" value="#{user.firstName}" required="true" title="Enter your First Name!">
 						<f:validateLength minimum="2" />
+						<p:ajax event="keyup" update="firstNameMsg" global="false"/>
 					</p:inputText>
-					<p:tooltip for="firstName" styleClass="tooltip" showEvent="focus" hideEvent="blur" />
-
+					<h:panelGroup>
+						<p:message id="firstNameMsg" for="firstName" />
+						<p:tooltip for="firstName" styleClass="tooltip" showEvent="focus" hideEvent="blur" />
+					</h:panelGroup>
+					
 					<h:panelGroup>
 						<h:outputText value="Last Name:" />
 						<h:outputText style="color:red" value="*  " />
 					</h:panelGroup>
 					<p:inputText id="lastName" label="Last Name" value="#{user.lastName}" required="true" title="Enter your Last Name!">
 						<f:validateLength minimum="2" />
+						<p:ajax event="keyup" update="lastNameMsg" global="false"/>
 					</p:inputText>
-					<p:tooltip for="lastName" styleClass="tooltip" showEvent="focus" hideEvent="blur" />
+					<h:panelGroup>
+						<p:message id="lastNameMsg" for="lastName" />
+						<p:tooltip for="lastName" styleClass="tooltip" showEvent="focus" hideEvent="blur" />
+					</h:panelGroup>
 					
 					<h:panelGroup>
 						<h:outputText value="User Name:" />
@@ -40,8 +49,12 @@
 					</h:panelGroup>
 					<p:inputText id="userName" value="#{user.userName}" required="true" label="User Name" title="Enter your User Name!">
 						<f:validateLength minimum="2" />
+						<p:ajax event="keyup" update="userNameMsg" global="false" listener="#{userService.checkAvailable}"/>
 					</p:inputText>
-					<p:tooltip for="userName" styleClass="tooltip" showEvent="focus" hideEvent="blur" />
+					<h:panelGroup>
+						<p:message id="userNameMsg" for="userName" />
+						<p:tooltip for="userName" styleClass="tooltip" showEvent="focus" hideEvent="blur" />
+					</h:panelGroup>
 					
 					<h:panelGroup>
 						<h:outputText value="Enter Password:" />
@@ -50,14 +63,14 @@
 					<p:password id="pass1" value="#{user.password}" required="true" label="Password" title="Please enter a password!" feedback="true" match="pass2">
 						<f:validateLength minimum="2" />
 					</p:password>
-					<h:outputText value="" />
+					<p:message id="pass1Msg" for="pass1" />
 					
 					<h:panelGroup>
 						<h:outputText value="Repeat Password:" />
 						<h:outputText style="color:red" value="*  " />
 					</h:panelGroup>
 					<p:password id="pass2" required="true" label="Password" title="Please enter a password!" />
-					<h:outputText value="" />
+					<p:message id="pass2Msg" for="pass2" />
 					
 					<p:commandButton id="backToSignIn" action="backToSignIn" immediate="true" icon="ui-icon-arrowreturnthick-1-w" value="Back to Sign In" />
 					<p:commandButton id="submitButton" action="confirmSignUp" update="regPanelGrid,messages" icon="ui-icon-check" value="Sign Up" />
