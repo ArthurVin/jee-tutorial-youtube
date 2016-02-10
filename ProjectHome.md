@@ -1,0 +1,1 @@
+Java EE (J2EE) Tutorial for beginners: Spring Framework + Spring Webflow + Spring Security + JPA (Hibernate) + JSF 2.0 (PrimeFaces) + Apache Maven 2 + Apache Tomcat + Subclipse + Oracle RDBMS + Eclipse IDE
